@@ -1,0 +1,30 @@
+{
+  "env": {
+    "es2022": true,
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:feryrardacon-ui5/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "camelcase": ["error", { "allow": ["^g_"] }],
+    "feryrardacon-ui5/hungarian-notation": [
+      "error",
+      {
+        "ignore": [
+          "formatter",
+          "cordova",
+          "g_sVersion",
+          "g_bDirty",
+          "g_sDirtyHash",
+          "g_sDirtyMessage"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  }
+}

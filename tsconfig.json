@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": false,
+    "sourceMap": false,
+    "strictPropertyInitialization": false,
+    "rootDir": "./src",
+    "outDir": "./out",
+    "paths": {
+      "rtc/*": ["./src/*"]
+    }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./src/coverage/**/*"]
+}

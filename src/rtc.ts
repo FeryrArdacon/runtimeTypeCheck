@@ -41,17 +41,22 @@ class Type {
         if (vPropType !== "object") throw new Error(sErrorMessge);
 
         vType.checkType(oObj[sKey]);
+        aCheckedProperties.push(sKey);
         continue;
       }
 
-      // Wenn die Property ein Array sein soll und sie kein "object" ist und
-      // Array.isArray muss sie nicht als Array erkennt - Fehler!
-      if (vType === "array" && (vPropType !== "object" || !Array.isArray(oObj[sKey])))
-        throw new Error(sErrorMessge);
+      // Wenn die Property ein Array ist muss sie nicht als auch als
+      // deklariert sein, sonst Fehler!
+      if (vPropType === "object" && Array.isArray(oObj[sKey])) {
+        if (vType !== "array") throw new Error(sErrorMessge);
+        aCheckedProperties.push(sKey);
+        continue;
+      }
 
       // Wenn die primitiven Typen nicht übereinstimmen ist das Objekt
       // nicht typkompatibel; Fehler!
       if (vPropType !== vType) throw new Error(sErrorMessge);
+      aCheckedProperties.push(sKey);
     }
 
     // Wenn nicht alle Properties des Typs im zu prüfenden Objekt
